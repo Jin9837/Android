@@ -11,3 +11,7 @@
 
 # 先在P:\github_repo\Android\Android 右键打开gitbash，然后输入git pull
 # 再把要更新的文件夹拷进github项目的文件夹，然后执行上面的三条命令
+
+
+# 如果要在另一台电脑上下载github的项目，首先现在该电脑上登录github
+# 然后进入想要下载的目录，右键打开gitbash之后输入git clone + 地址
