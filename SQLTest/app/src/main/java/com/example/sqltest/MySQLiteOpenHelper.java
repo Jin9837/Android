@@ -28,8 +28,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL(CREATE_TABLE_SQL);
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME_STUDENT);
+        db.execSQL(CREATE_TABLE_SQL);
+        //db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME_STUDENT);
     }
 
     @Override
