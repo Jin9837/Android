@@ -9,5 +9,5 @@
 
 # 如果有更新的情况下
 
-# 现在github下打开gitbash，然后输入git pull
-# 然后再把要更新的文件夹拷如github项目的文件夹，然后执行上面的三条命令
+# 先在P:\github_repo\Android\Android 右键打开gitbash，然后输入git pull
+# 再把要更新的文件夹拷进github项目的文件夹，然后执行上面的三条命令
