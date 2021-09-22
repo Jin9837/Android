@@ -1,0 +1,4 @@
+#Wed Sep 22 11:53:23 PDT 2021
+base.0=P\:\\AndroidWorkspace\\Attendance Monitoring System in Android App with Full Source Code\\Android-Attendance-App-master\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+path.0=classes.dex
+renamed.0=classes.dex
