@@ -438,11 +438,10 @@ public class SellStockFragment extends LazyLoadFragment {
     }
 
     private void sellStocks() {
-        //最后要恢复注释
-//        if (!DateUtil.isExchangeTime(System.currentTimeMillis())) {
-//            Toast.makeText(getActivity(), "当前非交易时间", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        if (!DateUtil.isExchangeTime(System.currentTimeMillis())) {
+            Toast.makeText(getActivity(), "当前非交易时间", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (isGoodInput()) {
             ExeStock exeStock = new ExeStock();
             exeStock.setName(etStock.getText().toString());

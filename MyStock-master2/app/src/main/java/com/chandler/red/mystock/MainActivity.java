@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static HashSet<String> StockHeadIds_ = new HashSet();
     private static List<String> StockIds_ = new ArrayList<>();
 
-
     // 主页 大盘情况
     private final static String ShIndex = "s_sh000001";
     private final static String SzIndex = "s_sz399001";

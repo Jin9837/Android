@@ -482,7 +482,6 @@ public class BuyStockFragment extends LazyLoadFragment {
             exeStock.setNumber(number);
             exeStock.setExeType(Constants.TYPE_BUY);
             exeStock.setExeTime(System.currentTimeMillis());
-
             StockBuisnessManager.getInstance(getActivity()).insertExchange(exeStock);
             final double[] cStockValue = {accStock.getCurStockValue()}; //当前持有股票数量
             final double[] cValue = {accStock.getCurValue()}; //当前账户余额
@@ -502,7 +501,7 @@ public class BuyStockFragment extends LazyLoadFragment {
                                 accStock.setCurValue(cValue[0]);
                                 StockBuisnessManager.getInstance(getActivity()).replaceAccount(accStock);
                                 refreshHoldsStocks();
-                                Toast.makeText(getActivity(), "购买成功1", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "购买成功", Toast.LENGTH_SHORT).show();
                                 t1.cancel();
                             }
                         }
@@ -518,13 +517,12 @@ public class BuyStockFragment extends LazyLoadFragment {
                 accStock.setCurValue(cValue[0]);
                 StockBuisnessManager.getInstance(getActivity()).replaceAccount(accStock);
                 refreshHoldsStocks();
-                Toast.makeText(getActivity(), "购买成功2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "购买成功", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void buyStocks2(){
-
+    private void buyStocks2() {
         if (isGoodInput()) {
             ExeStock exeStock = new ExeStock();
             exeStock.setName(etStock.getText().toString());
@@ -541,25 +539,24 @@ public class BuyStockFragment extends LazyLoadFragment {
             Toast.makeText(getActivity(), "开启监控模式", Toast.LENGTH_SHORT).show();
             Timer t1 = new Timer();
             t1.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    if (DateUtil.isExchangeTime(System.currentTimeMillis())) {
-                        if(exeStock.getExeValue() == 0.75 * curValue) {
-                            cValue[0] = cValue[0] - exeStock.getExeMount() * exeStock.getExeValue();
-                            cStockValue[0] = cStockValue[0] + exeStock.getExeMount() * exeStock.getExeValue();
-                            accStock.setCurStockValue(cStockValue[0]);
-                            accStock.setCurValue(cValue[0]);
-                            StockBuisnessManager.getInstance(getActivity()).replaceAccount(accStock);
-                            refreshHoldsStocks();
-                            Toast.makeText(getActivity(), "购买成功3", Toast.LENGTH_SHORT).show();
-                            t1.cancel();
-                        }}}
-            }, 10000, 10000);
+                    @Override
+                    public void run() {
+                        if (DateUtil.isExchangeTime(System.currentTimeMillis())) {
+                            if(exeStock.getExeValue() <= 0.75 * curValue) {
+                                cValue[0] = cValue[0] - exeStock.getExeMount() * exeStock.getExeValue();
+                                cStockValue[0] = cStockValue[0] + exeStock.getExeMount() * exeStock.getExeValue();
+                                accStock.setCurStockValue(cStockValue[0]);
+                                accStock.setCurValue(cValue[0]);
+                                StockBuisnessManager.getInstance(getActivity()).replaceAccount(accStock);
+                                refreshHoldsStocks();
+                                Toast.makeText(getActivity(), "购买成功", Toast.LENGTH_SHORT).show();
+                                t1.cancel();
+                            }}}
+                }, 10000, 10000);
             StockBuisnessManager.getInstance(getActivity()).replaceAccount(accStock);
             refreshHoldsStocks();
-        }
+            }
         return;
-
 }
 
 
